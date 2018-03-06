@@ -102,7 +102,7 @@ public class PuzzleView extends View {
     }
 
     canvas.drawColor(Color.BLACK);
-    canvas.drawBitmap();
+    canvas.drawBitmap(g.getBitmap(), gSrc, gDst, null);
   }
 
   if(){
