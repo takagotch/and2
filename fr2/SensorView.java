@@ -36,4 +36,30 @@ private void onTick(Graphics g){
   }
 }
 
+private void onTick(Graphics g){
+  if(scene == S_PLAY){
+    if(orValues[l] < -10){
+      ballVY += 0.1;
+      if(ballVY < 0) ballVY += 0.2;
+    } else if(oriValues[l] > 10){
+      ballVY -= 0.1;
+      if(ballVY > 0) ballVY -= 0.2;
+    }
+    if(oriValue[2] < -10){
+      ballVX -= 0.1;
+      if(ballVX > 0) ballVX -= 0.2;
+    } else if(oriValues[2] > 10){
+      ballVX += 0.1;
+      if(ballVX < 0) ballVX += 0.2;
+    }
+
+    if(ballVX < -MAX_V) ballVX = -MAX_V;
+    if(ballVX > MAX_V) ballVX = MAX_V;
+    if(ballVY < -MAX_V) ballVY = -MAX_V;
+    if(ballVY > MAX_V) ballVY = MAX_V;
+
+    ballX += ballVX;
+    ballY += ballVY;
+  }
+}
 
