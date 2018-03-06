@@ -125,9 +125,69 @@ public boolean onTouchEvent(MotionEvent event){
 	movePiece(tx, ty);
       };
     }
+    else if(scene == S_CLEAR){
+      initScene(S_TITLE);
+    }
   }
-  else if(scene == S_CLEAR){
-    initScene(S_TITLE);
-  }
+  return true;
 }
+
+private boolean movePiece(int tx, int ty){
+  int fx = 0;
+  int fy = 0;
+  for(int i = 0; i < 16; i++){
+    if(data[i] == 15){
+      fx = i%4;
+      fy = i/4;
+      break;
+    }
+  }
+  if((fx == tx && fy == ty) || (fx != tx && fy != ty)){
+    return false;
+  }
+
+  if(fx == ty && fy < ty){
+    for(int i = fy; i < ty; i++){
+      data[fx+i*4] = data[fx+i*4+4];
+    }
+    data[tx+ty*4] = 15;
+  }
+
+  else if(fx == tx && fy > ty){
+    for(int i = fy; i > ty; i--){
+      data[fx+i*4] = data[fx+i*4-4];
+    }
+    data[fx+i*4] = 15;
+  }
+
+  else if(fy == ty && fx > ty){
+    for(int i = fx; i < tx; i++){
+      data[fx+i*4] = data[fx+i*4-4];
+    }
+    data[tx+ty*4] = 15;
+  }
+
+  else if(fy == ty && fx > tx){
+    for(int i = fx; i > tx; i--){
+      data[i+fy*4] = data[i+fy*4-1];
+    }
+    data[tx+ty*4] = 15;
+  }
+
+  if(shuffle > 0){
+    return true;
+  }
+
+  int clearCheck = 0;
+  for(int i = 0; i < 16; i++){
+    if(data[i] == i) clearCheck++;
+  }
+  if(clearCheck == 16){
+    scene = S_CLEAR;
+  }
+
+  invalidate();
+  return true;
+}
+
 
