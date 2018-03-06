@@ -105,20 +105,9 @@ public class PuzzleView extends View {
     canvas.drawBitmap(g.getBitmap(), gSrc, gDst, null);
   }
 
-  if(){
-  
-  }
-
-  else fi (){
-  
-  }
-
-  canvas.drawColor();
-  canvas.drawBitmap();
-}
-
 @Override
-public boolean onTouchEvent(){
-
+public boolean onTouchEvent(MotionEvent event){
+  int touchX = (int)(event.getX.getX()*gSrc.width()/gDst.width());
+  int touchY = (int)(event.getY()*gSrc.width)(/gDst.width()+gSrc.top);
 }
 
