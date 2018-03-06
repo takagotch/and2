@@ -11,11 +11,12 @@ public class PuzzleGame extends Activity {
     super.onCreate(bundle);
     Util.setActivity(this);
 
-    getWindow().clearFlags();
-    getWindow().addFlags();
-    requestWindow();
+    getWindow().clearFlags(
+		    WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+    getWindow().addFlags(WindowManager.FLAG_FORCE_NOT_FULLSCREEN);
+    requestWindow(Window.FEATURE_NO_TITLE);
 
-    setContentView();
+    setContentView(new PuzzleView(this));
   }
 }
 
