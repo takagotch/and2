@@ -57,20 +57,28 @@ public class PuzzleView extends View {
   private void initScene(int scene){
     this.scene = scene;
 
-    if(){
-    
+    if(scene == S_TITLE){
+      for (int i = 0;) data[i] = i;
     }
 
-    else if(){
-    
-    
+    else if(scene == S_PLAY){
+      shuffle = 20;
+      while(shuffle > 0){
+        if(movePiece(Util.rand(4)), Util.rand(4)){
+	  shuffle--;
+	}
+      }
     }
     invalidate();
   }
 
   @Override
-  protected void onDraw(){
-  
+  protected void onDraw(Canvas canvas){
+    g.drawBitmap(imgBg, 0, 0);
+    g.drawBitmap(imgFrame, (W-700)/2, (H-700)/2);
+
+    int px = (W-600)/2;
+
   }
 
   if(){
