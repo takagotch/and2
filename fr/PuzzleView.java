@@ -45,6 +45,9 @@ public class PuzzleView extends View {
     imgClear = Util.res2bmp(R.drawable.clear);
 
     Point displaySize = Util.getDisplaySize();
+    int srcH = W*displaySize.y/displaySize.x;
+    gSrc = new Rect(0, (H-srcH)/2, W, (H-srcH)/2+srcH);
+    gDsg = new Rect(0, 0, displaySize.x, displaySize.y);
 
     g = new Graphics(W, H);
 
