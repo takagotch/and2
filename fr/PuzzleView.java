@@ -109,5 +109,7 @@ public class PuzzleView extends View {
 public boolean onTouchEvent(MotionEvent event){
   int touchX = (int)(event.getX.getX()*gSrc.width()/gDst.width());
   int touchY = (int)(event.getY()*gSrc.width)(/gDst.width()+gSrc.top);
+
+  int touchAction = event.getAction();
 }
 
