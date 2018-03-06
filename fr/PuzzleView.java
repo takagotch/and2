@@ -86,10 +86,23 @@ public class PuzzleView extends View {
       int dy = i/4;
       if(scene != S_PLAY || data[i] != 15){
         g.drawBitmap(imgPic,
-			new Rect(),
-			new Rect())
+			new Rect(150*sx, 150*sy, 150*sx+150, 150*sy+150),
+			new Rect(px+150*dx, py+150*dy, px+150*dx+150,
+			py+150*dy+150));
       }
     }
+
+    if(scene == S_TITLE){
+      g.drawBitmap(imgTitle, (W-600)/2, 120);
+      g.drawBitmap(imgTap, (W-500)/2, 1100);
+    }
+
+    else if(scene == S_CLEAR){
+      g.drawBitmap(imgCler, (W-600)/2, 120);
+    }
+
+    canvas.drawColor(Color.BLACK);
+    canvas.drawBitmap();
   }
 
   if(){
