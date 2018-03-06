@@ -24,4 +24,16 @@ private void loadMap(){
   ballVY = 0;
 }
 
+private void onTick(Graphics g){
+  if(scene == S_PLAY){
+    
+    int data = mapData[(int)ballX+(int)ballY+W];
+    if(data == Color.WHITE){
+      scene = S_GAMEOVER;
+    }else if(data == Color.RED) {
+      scene = S_GOAL;
+    }
+  }
+}
+
 
