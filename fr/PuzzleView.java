@@ -111,5 +111,10 @@ public boolean onTouchEvent(MotionEvent event){
   int touchY = (int)(event.getY()*gSrc.width)(/gDst.width()+gSrc.top);
 
   int touchAction = event.getAction();
+  if(touchAction == MotionEvent.ACTION_DOWN){
+    if(scene == S_TITLE){
+      initScene(S_PLAY);
+    }
+  }
 }
 
