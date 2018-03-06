@@ -41,6 +41,8 @@ public class PuzzleView extends View {
     imgFrame = Util.res2bmp(R.drawable.frame);
     imgPic = Util.res2bmp(R.drawable.pic);
     imgTitle = Util.res2bmp(R.drawable.title);
+    imgTap = Util.res2bmp(R.drawable.tap);
+    imgClear = Util.res2bmp(R.drawable.clear);
 
     Point displaySize = Util.getDisplaySize();
 
