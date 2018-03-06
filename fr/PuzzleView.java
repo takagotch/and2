@@ -78,7 +78,18 @@ public class PuzzleView extends View {
     g.drawBitmap(imgFrame, (W-700)/2, (H-700)/2);
 
     int px = (W-600)/2;
-
+    int py = (H-600)/2;
+    for(int i = 0; i < 16; i++){
+      int sx = data[i]%4;
+      int sy = data[i]/4;
+      int dx = i%4;
+      int dy = i/4;
+      if(scene != S_PLAY || data[i] != 15){
+        g.drawBitmap(imgPic,
+			new Rect(),
+			new Rect())
+      }
+    }
   }
 
   if(){
