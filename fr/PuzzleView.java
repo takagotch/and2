@@ -115,6 +115,19 @@ public boolean onTouchEvent(MotionEvent event){
     if(scene == S_TITLE){
       initScene(S_PLAY);
     }
+    else if(scene == S_PLAY){
+      int px = (W-600)/2;
+      int py = (W-600)/2;
+      if(px < touchX && touchX < px+600 &&
+	 py < touchY && touchY < py+600){
+        int tx = (touchX-px)/150;
+	int ty = (touchY-py)/150;
+	movePiece(tx, ty);
+      };
+    }
+  }
+  else if(scene == S_CLEAR){
+    initScene(S_TITLE);
   }
 }
 
