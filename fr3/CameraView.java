@@ -42,3 +42,43 @@ private void updateLayoutParams(){
   setLayoutParams(params);
 }
 
+pictureSize = getPictureSize(cameraInfo);
+
+public void takePicture(){
+  if(cameraDevice == null || !active) return;
+  active = false;
+
+  try{
+    ImageReader reader = ImageReader.newInstance(
+	pictureSize.getWidth(), pictureSize.getHeight(),
+	ImageFormat.JPEG, 2);
+    reader.setOnImageAvailableListener(){
+      new ImageReader.OnImageAvailableListener(
+      @Override
+      public void onImageAvailable(ImageReader reader){
+        Image image = null;
+	try{
+	  image = reader.acquireLatestImage();
+	  byte[] data = image2data(image);
+
+	  int pw = previewSize.getWidth();
+	  int ph = pictureSize.getHeight();
+	  int sw = Math.min(pw, ph);
+	  int dw = sw;
+	  int dh = sw*viewH/viewW;
+	  Bitmap bmp = Util.data2bmp(data);
+	  bmp = Util.cutBitmap(bmp, dw, dh);
+	} catch(Exception e){
+	  if(image != null) image.close();
+	}
+      }
+    }, workHandler);
+  } catch(CameraAccessException e){
+      e.printStackTrace();
+  }
+}
+
+
+
+
+
