@@ -9,4 +9,7 @@ public static byte[] bmp2data(Bitmap src){
   return os.toByteArray();
 }
 
+public static Bitmap cutBitmap(Bitmap bmp, int w, int h){
+  Bitmap result = Bitmap.createBitmap();
+}
 
