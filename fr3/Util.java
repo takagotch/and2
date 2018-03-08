@@ -5,7 +5,8 @@ public static Bitmpa data2bmp(byte[] data){
 
 public static byte[] bmp2data(Bitmap src){
   ByteArrayOutputStream os = new ByteArrayOutputStream();
-  src.
+  src.compress();
+  return os.toByteArray();
 }
 
 
