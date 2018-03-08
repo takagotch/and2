@@ -87,7 +87,7 @@ private String getCameraId(){
     	   CameraCharacteristics.LENS_FACING_BACK;
 
     for(String cameraId : manager.getCameraIdList()){
-      Camera
+      CameraCharacteristics cameraInfo =
     }
   }
 }
