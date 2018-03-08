@@ -5,4 +5,5 @@
 	  ="android.permission.CAMERA" />
   <uses-permission android:name
 	  ="anroid.permission.WRITE_EXTERNAL_STORAGE" />
-  <>
+  <uses-permission android:name
+	  =>
