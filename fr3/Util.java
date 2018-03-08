@@ -13,6 +13,6 @@ public static Bitmap cutBitmap(Bitmap bmp, int w, int h){
   Bitmap result = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
   Canvas canvas = new Canvas(result);
   canvas.drawBitmap(bmp, 0, (h-bmp.getHeight())/2, null);
-  return 
+  return result;
 }
 
