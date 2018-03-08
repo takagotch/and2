@@ -10,6 +10,8 @@ public static byte[] bmp2data(Bitmap src){
 }
 
 public static Bitmap cutBitmap(Bitmap bmp, int w, int h){
-  Bitmap result = Bitmap.createBitmap();
+  Bitmap result = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+  Canvas canvas = new Canvas(result);
+
 }
 
