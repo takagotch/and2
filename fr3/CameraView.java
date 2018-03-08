@@ -89,9 +89,12 @@ private String getCameraId(){
     for(String cameraId : manager.getCameraIdList()){
       CameraCharacteristics cameraInfo =
 	      manager.getCameraCharacteristics(cameraId);
-      if(cameraInfo.){}
+      if(cameraInfo.get(CameraCharacterisitcs.LENS_FACING)
+	== facing){
+	  return cameraId;
+	}
     }
-  }
+  } catch(){}
 }
 
 
