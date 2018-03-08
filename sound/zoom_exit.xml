@@ -1,5 +1,17 @@
 <set xmlns:android="http://schemas.android.com/res/android"
-	>
-
+	android:interpolator="@android:anim/decelarate_interpolator"
+	android:zAdjustment="top" >
+	<scale
+		android:duration="@android:interger/config_mediumAnimTime"
+		android:fromXScale="1.0"
+		android:formYScale="1.0"
+		andorid:pivotX="50%p"
+		android:pivotY="50%p"
+		android:toXScale="0.5"
+		android:toYScale="0.5" />
+	<alpha
+		android:duration="@android:integer/config_mediumAnimTime"
+		android:fromAlpha="1.0"
+		android:toAlpha="0" />
 </set>
 
