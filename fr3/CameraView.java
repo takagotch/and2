@@ -102,9 +102,5 @@ private String getCameraId(){
 
 if(front) bmp = Util.flipBitmap(bmp);
 
-public static Bitmpa data2bmp(byte[] data){
-  return BitmapFactory.decodeByteArray(data, 0, data, length);
-}
-
 
 
