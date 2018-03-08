@@ -93,13 +93,36 @@ public class LocationEx extends Activity impelments LocationListener{
   }
 
   private void checkPermissions(){
-    if(){}
+    if(!isGranted()){
+      ActivityCompat.requestPermissions(this, PERMISSIONS,
+		      REQUEST_PERMISSIONS);
+    }
   }
 
-  private boolean isGranted(){}
+  private boolean isGranted(){
+    for(int i = 0; i < PERMISSIONS.length; i++){
+      if(PermissionChecker.checkSelfPermission(
+        LocationEx.this, PERMISSIONS[i]) !=
+	PackageManager.PERMISSION_GRRANTED){
+	return false;
+      }
+    }
+    return true;
+  }
 
   @Override
-  public void onRequestPermissionsResult(){}
+  public void onRequestPermissionsResult(int requestCode,
+    String permissions[], int[] results){
+    if(requestCode == REQUEST_PERMISSIONS){
+      if(!isGranted()){
+        textView.setText("LocationEx>"+BR+
+			"NOT_PER")l
+      }
+    } else{
+      super.onRequestPermissionsResult(
+		      requestCode, permissions, results);
+    }
+  }
 }
 
 
