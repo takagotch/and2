@@ -36,9 +36,46 @@ public class LaunchAnimationEx extends Acitivity implements
   }
 
   private Button makeButton(String text, String tag){
-  
+    Button button = new Button(this);
+    button.setText(text);
+    button.setTag(tag);
+    button.setOnClickListener(this);
+    button.setLayoutParams(new LinerLayout.LayoutParams(WC, WC));
+    return button;
   }
 
- }
+  public void onClick(View view){
+    String tag = ()view.getTag();
+
+    if(TAG_DEFAULT.equals(tag)){
+      ActivityOptions opts = ActivityOptions.makeScaleUpAnimation(
+		      view, 0, 0, view.getWidth(), view.getHeight());
+      startActivity(new Intent(this, MyActivity.class),
+		      opts.otBundle());
+    }
+
+    else if(TAG_THUMBNAIL.equals(tag)){
+      view.setDrawingCacheEnabled(true);
+      view.setPressed(false);
+      view.refreshDrawableState();
+      Bitmap bmp = view.getDrawingCache();
+
+      ActivityOptions opts
+	      = ActivityOptions.makeThumbnailScaleUpAnimation(
+		view, bmp, 0, 0);
+      startAcitvity(new Intent(this, MyActivity.class),
+		opts.toBundle());
+      view.setDrawingCacheEnabled(false);
+    }
+    else if(TAG_CUSTOM.equals(tag)){
+      AcitivityOptions opts = AcitvityOptions.makeCustomAnimation(
+		this, R.anim.zoom_enter, R.anim.zoom_exit);
+      startAcitivity(new Intent(this, MyActivity.class),
+		opts.toBundle());
+    }
+  }
+}
+
+
 
 
