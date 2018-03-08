@@ -2,7 +2,14 @@ package net.tky.mediaplayerex;
 import android.app.Activity;
 import android.graphics.Color;
 import android.media.Audio.Manager;
-import
+import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MediaPlayerEx extends Activity
   implements View.OnClickListener{
