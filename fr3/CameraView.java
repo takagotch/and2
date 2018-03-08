@@ -78,6 +78,19 @@ public void takePicture(){
   }
 }
 
+private boolean front;
+
+private String getCameraId(){
+  try{
+    int facing = (front)?
+	   CameraCharacteristics.LENS_FACING_FRONT;
+    	   CameraCharacteristics.LENS_FACING_BACK;
+
+    for(String cameraId : manager.getCameraIdList()){
+      Camera
+    }
+  }
+}
 
 
 
