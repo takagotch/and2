@@ -88,6 +88,8 @@ private String getCameraId(){
 
     for(String cameraId : manager.getCameraIdList()){
       CameraCharacteristics cameraInfo =
+	      manager.getCameraCharacteristics(cameraId);
+      if(){}
     }
   }
 }
