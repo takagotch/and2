@@ -100,6 +100,8 @@ private String getCameraId(){
   return null;
 }
 
+if() bmp = Util.flipBitmap();
+
 
 
 
