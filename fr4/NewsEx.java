@@ -8,7 +8,13 @@ private void loadItems(String xml){
     int type = parser.getEventType();
     String tagName = null;
     NewsItem item = null;
-    while(){}
+    while(type != XmlPullParser.END_DOCUMENT){
+      String name = parser.getName();
+      if(type == XmlPullParser.START_TAG){
+        tagName = name;
+	if(){}
+      }
+    }
   }
 }
 
