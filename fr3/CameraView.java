@@ -94,7 +94,10 @@ private String getCameraId(){
 	  return cameraId;
 	}
     }
-  } catch(){}
+  } catch(Exception e){
+    e.printStackTrace();
+  }
+  return null;
 }
 
 
