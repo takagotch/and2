@@ -33,6 +33,12 @@
 			android:launchMode="singleTask"
 			android:screenOrientation="portrait"
 			>
+		//appwiget
+		<receiver
+			android:name="AppWidgetEx"
+			android:exported="false"
+			android:label="AppWidgetEX" >
+
 			<intent-filter >
 			  <action android:name="android.intent.action.MAIN" />
 			  <category android:name
@@ -42,11 +48,25 @@
 				  ="android.intent.category.HOME" />
 			  <category android:naem
 				  ="android.intent.category.DEFAULT" />
+			  //appwiget
+			  <action android:name
+				  ="android.appwidget.action.APPWIDGET_UPDATE" />
 		  	</intent-filter>
-			//
+			//appwiget
 			<meta-data
-				android:name=""
-				android:resource="" />
+				android:name="android.appwidget.provider"
+				android:resource="@xml/appwidgetex_info" />
+		</receiver>
+
+		//appwiget
+		<service
+			android:name="AppWidgetService"
+			android:exported="false" >
+			<intent-filter>
+				<action android:name
+					="net.tky.appwidget.ACTION_BTNCLICK" />
+			</intent-filter>
+		</service>
 
 		</acitvity>
 
