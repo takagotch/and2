@@ -12,7 +12,8 @@
 		="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name
 		="android.permission.READ_EXTERNAL_STORAGE" />
-
+	//InAppex
+	<uses-permission android:name="com.android.vending.BILLING" />
 
 	<application
 		android:allowBackup="true"
