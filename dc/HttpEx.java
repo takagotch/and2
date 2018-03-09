@@ -82,12 +82,22 @@ public class HttpEx extends Activity
     ByteArrayOutputStream out = null;
     try{
       URL url = new URL(path);
-      c = ()url.openConnection();
-      c.setRequestMethod();
+      c = (HttpURLConnection)url.openConnection();
+      c.setRequestMethod("GET");
       c.connect();
       in = c.getInputStream();
+
+      out = new ByteArrayOutputStream();
+      while(true){
+        int size = in.read(w);
+	if(size <= 0) break;
+	out.write(w, 0, size);
+      }
+      out.close();
+
+      in.close();
+      c.disconnect();
     }
-    out.close();
 
     in.close();
     c.disconnect();
