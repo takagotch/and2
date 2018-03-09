@@ -37,12 +37,12 @@ public class HttpEx extends Activity
     layout.setOrientation(LinearLayout.VERTICAL);
     setContentView(layout);
 
-    editText = new EditText();
-    editText.setText();
-    editText.setLayoutParams();
-    layout.addView();
+    editText = new EditText(this);
+    editText.setText("");
+    editText.setLayoutParams(new LinearLayout.LayoutParams(MP, WC));
+    layout.addView(editText);
 
-    layout.addView();
+    layout.addView(makeButton("HTTP DC", TAG_READ));
   }
 
   private Button makeButton(){
