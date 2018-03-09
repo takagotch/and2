@@ -54,8 +54,47 @@ public class HttpEx extends Activity
     return button;
   }
 
-  public void onClick(){
-  
+  public void onClick(View v){
+    String tag = (String)v.getTag();
+    if(TAG_READ.equals(tag)){
+      Thread thread = new Thread(new Runnable() {public void run(){
+        try{
+	  text = new String(http2data(URL));
+	} catch(Exception e){
+	  text = null;
+	}
+	handler.post(new Runnable() {public void run(){
+	  if(text != null){
+	    editText.setText(text);
+	  } else{
+	    editText.setText("ERR");
+	  }
+	}});
+      }});
+      thread.start();
+    }
+  }
+
+  public static byte[] http2data(String path) throws Exception{
+    byte[] w=new byte[1024];
+    HttpURLConnection c = null;
+    InputStream in = null;
+    ByteArrayOutputStream out = null;
+    try{
+      URL url = new URL(path);
+      c =
+    }
+    out.close();
+
+    in.close();
+    c.disconnect();
+    return out.toByteArray();
+  } catch(Exception e){
+    try{
+    
+    } catch(){
+    }
+
   }
 }
 
