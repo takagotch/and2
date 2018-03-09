@@ -287,10 +287,28 @@ public class Camera2View extends TextureView {
 		  }
 		}
 
+		@Override
+		public void onConfigureFailed(
+			CameraCaptureSession session){
+			toast("ERR");
 
-		})
+			startPreview();
+			}
+		}, workerHandler);
+      } catch(CameraAccessException e){
+        e.printStackTrace();
       }
     }
+
+    private byte[] image2data(Image image){
+      Image.Plane plane = image.getPlanes()[0];
+      ByteBuffer buffer = plane.getBuffer();
+      byte[] data = new byte[buffer.capacity()];
+      buffer.get(data);
+      return data;
+    }
+
+    private int getPhotoOrientation(){}
   }
 }
 
