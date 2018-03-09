@@ -45,8 +45,13 @@ public class HttpEx extends Activity
     layout.addView(makeButton("HTTP DC", TAG_READ));
   }
 
-  private Button makeButton(){
-  
+  private Button makeButton(String text, String tag){
+    Button button = new Button(this);
+    button.setText(text);
+    button.setTag(tag);
+    button.setOnClickListener(this);
+    button.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
+    return button;
   }
 
   public void onClick(){
