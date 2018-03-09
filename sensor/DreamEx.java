@@ -25,7 +25,67 @@ public class DreamEx extends DreamService {
     super.onAttachedToWindow();
 
     setInteractive(false);
+
+    setFullscreen(true);
+
+    FrameLayout layout = FrameLayout(this);
+    layout.setBackgroundColor(Color.WHITE);
+    setContentView(layout);
+
+    Bitmap bmp = BitmapFactory.decodeResource(
+	getResources(), R.drawable.bg);
+    ImageView iv = new ImageView(this);
+    iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    iv.setImageBitmap(bmp);
+    layout.addView(iv);
+
+    LinearLayout sublayout = new LinearLayout(this);
+    sublayout.setPadding(20, 20, 20, 20);
+    sublayout.setGravity(Gravity.LEFT|Gravity.TOP);
+    layout.addView(sublayout);
+
+    textView = new TextView(this);
+    textView.setTextSize(44);
+    textView.setTextColor(Color.DKGRAY);
+    sublayout.addView(textView);
+
+    updateCurrentTime();
   }
+
+  @Override
+  public void onDreamingStarted(){
+    super.onDreamStarted();
+
+    IntentFilter filter = new IntentFilter();
+    filter.addAction(Intent.ACTION_TIME_TICK);
+    registerReceiver(receiver, filter);
+  }
+
+  @Override
+  public void onDreamingStopped(){
+    super.onDreamingStopped();
+
+    unregisterReceiver(receiver);
+  }
+
+  @Override
+  public void onDetachedFromWindow(){
+    super.onDetachedFromWindow();
+  }
+
+  private void updateCurrentTime(){
+    SimpleDateFormat dataFormat =
+      new SimpleDateFormat("HH:mm", Locale.JAPANESE);
+    textView.setText(dateFormat.format(new Date()));
+  }
+
+  private final BroadcastReceiver receiver = new BroadcastReceiver(){
+    @Override
+    public void onReceive(Context context, Intent intent){
+      updateCurrentTime();
+    }
+  };
 }
+
 
 
