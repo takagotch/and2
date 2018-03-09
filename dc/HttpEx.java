@@ -97,17 +97,16 @@ public class HttpEx extends Activity
 
       in.close();
       c.disconnect();
+      return out.toByteArray();
+    } catch(Exception e){
+      try{
+        if(c != null) c.disconnect();
+	if(in != null) in.close();
+	if(out != null) out.close();
+      } catch(Exception e2){
+      }
+      throw e;
     }
-
-    in.close();
-    c.disconnect();
-    return out.toByteArray();
-  } catch(Exception e){
-    try{
-    
-    } catch(){
-    }
-
   }
 }
 
