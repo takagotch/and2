@@ -4,3 +4,10 @@
   <string name="roll">ROLL</string>
 </resocurces>
 
+//wallpaper
+<resources>
+  <string name="app_name">LiveWallpaperEx</string>
+  <string name="description">text</string>
+  <string name="author">tky.net</string>
+</resources>
+

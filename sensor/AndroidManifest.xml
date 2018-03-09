@@ -67,6 +67,18 @@
 					="net.tky.appwidget.ACTION_BTNCLICK" />
 			</intent-filter>
 		</service>
+		//wallpaper
+		<service
+			android:name=".LiveWallpaperEx"
+			android:permission="android.permission.BIND_WALLPAPER" >
+			<intent-filter>
+				<action android:name
+					="android.service.wallpaper.WallpaperService" />
+			</intent-filter>
+			<meta-data
+				android:name="android.service.wallpaper"
+				android:resources="@xml/wallpaper" />
+		</service>
 
 		</acitvity>
 
