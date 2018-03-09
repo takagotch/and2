@@ -33,7 +33,25 @@ public class HttpEx extends Activity
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     LinearLayout layout = new LinearLayout(this);
+    layout.setBackgroundColor(Color.WHITE);
+    layout.setOrientation();
+    setContentView();
 
+    editText = new EditText();
+    editText.setText();
+    editText.setLayoutParams();
+    layout.addView();
+
+    layout.addView();
+  }
+
+  private Button makeButton(){
+  
+  }
+
+  public void onClick(){
+  
   }
 }
+
 
