@@ -42,8 +42,15 @@
 				  ="android.intent.category.HOME" />
 			  <category android:naem
 				  ="android.intent.category.DEFAULT" />
-			</intent-filter>
+		  	</intent-filter>
+			//
+			<meta-data
+				android:name=""
+				android:resource="" />
+
 		</acitvity>
+
 	</application>
+
 </manifest>
 
