@@ -308,7 +308,58 @@ public class Camera2View extends TextureView {
       return data;
     }
 
-    private int getPhotoOrientation(){}
+    private int getPhotoOrientation(){
+      int displayRotation = 0;
+      int rotation = activity.getWindowManager().
+	      getDefaultDisplay().getRotation();
+      if(rotation == Surface.ROTATION_0) displayRotation = 0;
+      if(rotation == Surface.ROTATION_90) displayRotation = 90;
+      if(rotation == Surface.ROTATION_180) displayRotation = 180;
+      if(rotation == Surface.ROTATION_270) displayRotation = 270;
+      int sensorOrientation = cameraInfo.get(
+	CameraCharacteristics.SENSOR_ORIENTATION);
+      return (sensorOrientation-displayRotation+360)%360;
+    }
+
+    private void savePhoto(byte[] data){
+      try{
+        SimpleDataFormat format = new SimpleDataFormat(
+		"'IMG'_yyyyMMdd_HHmmss'.jpg'", Locale.getDefault());
+	String fileName = format.format(
+		new Data(System.currentTimeMills()));
+	String path = Environment.getExternalStorageDirectory()+
+		"/"+fileName;
+
+	saveData(data, path);
+
+	MediaScannerConnection.scanFile(getContext(),
+		new String[]{path}, null, null);
+      } catch(Exception e){
+        toast(e.toString());
+      }
+    }
+
+    private void saveData(byte[] w, String path)
+	    throws Exception{
+      FileOutputStream out = null;
+      try{
+        out = new FileOutputStream(path);
+	out.write(w);
+	out.close();
+      } catch(Exception e){
+        if(out != null) out.close();
+	throw e;
+      }
+    }
+
+    private void toast(final String text){
+      uiHandler.post(new Runnable(){
+        public void run(){
+	 Toast.makeText(getContext(), text,
+		Toast.LENGTH_LONG).show();
+	}
+      });
+    }
   }
 }
 
