@@ -34,8 +34,8 @@ public class HttpEx extends Activity
 
     LinearLayout layout = new LinearLayout(this);
     layout.setBackgroundColor(Color.WHITE);
-    layout.setOrientation();
-    setContentView();
+    layout.setOrientation(LinearLayout.VERTICAL);
+    setContentView(layout);
 
     editText = new EditText();
     editText.setText();
