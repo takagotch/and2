@@ -30,25 +30,56 @@ public class SocketEx extends Activity
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     LinarLayout layout = new LinearLayout(this);
-    layout.setBackgroundColor();
-    layout.setOrientation();
-    setContentView();
+    layout.setBackgroundColor(Color.WHITE);
+    layout.setOrientation(LinearLayout.VERTICAL);
+    setContentView(layout);
 
-    edtSend = new EditText();
-    edtSend.setText();
-    edtSend.setLayoutParams();
-    layout.addView();
+    edtSend = new EditText(this);
+    edtSend.setText("");
+    edtSend.setLayoutParams(MP, WC);
+    layout.addView(edtSend);
 
-    btnSend = new Button();
+    btnSend = new Button(this);
+    btnSend.setText("SEND");
+    btnSend.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
+    layout.addView(btnSend);
 
-    lblReceive = new TextView();
+    lblReceive = new TextView(this);
+    lblReceive.setTextSize(16.0f);
+    lblReceive.setTextColor(Color.BLACK);
+    lblReceive.setTextColor(new LinearLayout.LayoutParams(MP, WC));
+    layout.addView(lblReceive);
   }
 
   @Override
-  public void onStart(){}
+  public void onStart(){
+    super.onStart();
+
+    Thread thread = new Thread(){
+      public void run(){
+        try{
+	  connect(IP, 8081);
+	} catch (Exception e){
+	}
+      }
+    };
+    thread.start();
+  }
 
   @Override
-  public void onStop(){}
+  public void onStop(){
+    super.onStop();
+    disconnect();
+  }
+
+  private void addText(){}
+
+  private void connect(){}
+
+  private void disconnect(){}
+
+  public void onClick(){}
+
 }
 
 
