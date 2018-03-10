@@ -72,14 +72,69 @@ public class SocketEx extends Activity
     disconnect();
   }
 
-  private void addText(){}
+  private void addText(final String text){
+    handler.post(new Runnable(){
+      public void run(){
+        lblReceive.setText(text+BR+
+		lblReceive.getText());
+      }
+    });
+  }
 
-  private void connect(){}
+  private void connect(String ip, int port){
+    int size;
+    String str;
+    byte[] w = new byte[1024];
+    try{
+      addText("On..");
+      socket = new Socket(ip, port);
+      in = socketInputStream();
+      out = socket.getOutputStream();
+      addText("COMPLETE");
 
-  private void disconnect(){}
+      while(socket != null && socket.isConnected()){
+        size = in.read(w);
+	if(size <= 0) continue;
+	str = new String(w, 0, size, "UTF-8");
 
-  public void onClick(){}
+	addText(str);
+      }
+    } catch (Exception e){
+      addText("ERR");
+    }
+  }
 
+  private void disconnect(){
+    try{
+      socket.close();
+      socket = null;
+    } catch(Exception e){
+    }
+  }
+
+  public void onClick(View v){
+    Thread thread = new Thread(new Runnable() {public void run(){
+    error = false;
+    try{
+      if(socket != null && socket.isConnected()){
+        byte[] w
+	  = edtSend.getText().toString().getBytes("UTF8");
+	out.write(w);
+	out.flush();
+      }
+    } catch(Exception e){
+      error = true;
+    }
+    handler.post(new Runnable() {public void run(){
+      if(!error){
+        edtSend.setText("");
+      } else{
+        addText("ERR");
+      }
+    }});
+    }});
+    thread.start();
+  }
 }
 
 
