@@ -26,9 +26,9 @@ public class BluetoothEx extends AppCompatActivity
     layout.setOrientation(LinearLayout.VERTICAL);
     setContentView(layout);
 
-    edtSend = new EditText();
-    edtSend.setText();
-    edtSend.setLayoutParams();
+    edtSend = new EditText(this);
+    edtSend.setText("", TextView.BufferType.NORMAL);
+    edtSend.setLayoutParams(new LinearLayout.LayoutParams(MP, WC));
     layout.addView(edtSend);
 
     btnSend = new Button(this);
