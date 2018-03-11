@@ -22,7 +22,7 @@ public class BluetoothEx extends AppCompatActivity
     super.onCreate(bundle);
 
     LinearLayout layout = new LinearLayout(this);
-    layout
+    layout.setBackgroundColor();
   }
 }
 
