@@ -46,6 +46,49 @@ public class BluetoothEx extends AppCompatActivity
     btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     chatManager = new ChatManger(this);
+
+    @Override
+    public void onStart(){
+      super.onStart();
+
+      if(!btAdapter.isEnabled()){
+        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+	startActivityForResult(intent, RQ_ENABLE_BT);
+      }
+
+      if(cahtManager.getState() == ChatManager.STATE_NONE){
+        chatManager.accept();
+      }
+    }
+
+    @Override
+    public void onDestroy(){
+      super.onDestroy();
+
+      chatManger.stop();
+    }
+
+    private void ensureDiscoverable(){
+      if(btAdapter.getScanMode() !=
+	 BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE){
+	 Intent intent
+		 = new Intent();
+	 intent.putExtra();
+	 startActivity();
+	 }
+    }
+
+    @Override
+    public boolean onCreateOptionMenu(){}
+
+    @Override
+    public boolean onOptionsItemSelected(){}
+
+    public void onActivityResult(){}
+
+    public void addText(){}
+
+    public void onClick(){}
   }
 }
 
