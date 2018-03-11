@@ -18,7 +18,9 @@ public class BluetoothEx extends AppCompatActivity
   private TextView lblReceive;
 
   @Override
-  public voie onCreate(){}
+  public voie onCreate(Bundle bundle){
+  
+  }
 }
 
 
