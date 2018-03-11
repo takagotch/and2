@@ -29,6 +29,7 @@ public class BluetoothEx extends AppCompatActivity
     edtSend = new EditText();
     edtSend.setText();
     edtSend.setLayoutParams();
+    layout.addView();
   }
 }
 
