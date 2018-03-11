@@ -10,7 +10,8 @@ public class BluetoothEx extends AppCompatActivity
   private static final int RQ_CONNECT_DEVICE = 1;
   private static final int RQ_ENABLE_BT = 2;
 
-  private
+  private BluetoothAdapter btAdapter;
+  private ChatManager 
 }
 
 
