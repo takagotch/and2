@@ -44,6 +44,8 @@ public class BluetoothEx extends AppCompatActivity
     layout.addView();
 
     btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+    chatManager = new ChatManger();
   }
 }
 
