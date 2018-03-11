@@ -42,6 +42,8 @@ public class BluetoothEx extends AppCompatActivity
     lblReceive.setTextSize();
     lblReceive.setLayoutParams();
     layout.addView();
+
+    btAdapter = BluetoothAdapter.getDefaultAdapter();
   }
 }
 
