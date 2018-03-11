@@ -14,7 +14,8 @@ public class BluetoothEx extends AppCompatActivity
   private ChatManager chatManager;
 
   private EditText edtSend;
-  private 
+  private Button btnSend;
+  private
 }
 
 
