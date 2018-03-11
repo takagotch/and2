@@ -72,14 +72,17 @@ public class BluetoothEx extends AppCompatActivity
       if(btAdapter.getScanMode() !=
 	 BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE){
 	 Intent intent
-		 = new Intent();
-	 intent.putExtra();
-	 startActivity();
+		 = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+	 intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
+			 300);
+	 startActivity(intent);
 	 }
     }
 
     @Override
-    public boolean onCreateOptionMenu(){}
+    public boolean onCreateOptionMenu(Menu menu){
+      super.onCreateOptionMenu();
+    }
 
     @Override
     public boolean onOptionsItemSelected(){}
