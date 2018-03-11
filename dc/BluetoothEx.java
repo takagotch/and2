@@ -15,7 +15,10 @@ public class BluetoothEx extends AppCompatActivity
 
   private EditText edtSend;
   private Button btnSend;
-  private
+  private TextView lblReceive;
+
+  @Override
+  public 
 }
 
 
