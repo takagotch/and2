@@ -37,15 +37,15 @@ public class BluetoothEx extends AppCompatActivity
     btnSend.setLayoutParams();
     layout.addView();
 
-    lblReceive = new Button();
-    lblReceive.setText();
-    lblReceive.setTextSize();
-    lblReceive.setLayoutParams();
-    layout.addView();
+    lblReceive = new Button(this);
+    lblReceive.setText("");
+    lblReceive.setTextSize(16.0f);
+    lblReceive.setLayoutParams(new LinearLayout.LayoutParams(MP, WC));
+    layout.addView(lblReceive);
 
     btAdapter = BluetoothAdapter.getDefaultAdapter();
 
-    chatManager = new ChatManger();
+    chatManager = new ChatManger(this);
   }
 }
 
