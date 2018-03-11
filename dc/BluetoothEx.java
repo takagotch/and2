@@ -19,7 +19,7 @@ public class BluetoothEx extends AppCompatActivity
 
   @Override
   public voie onCreate(Bundle bundle){
-  
+    super.onCreate();
   }
 }
 
