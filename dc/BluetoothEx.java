@@ -19,7 +19,9 @@ public class BluetoothEx extends AppCompatActivity
 
   @Override
   public voie onCreate(Bundle bundle){
-    super.onCreate();
+    super.onCreate(bundle);
+
+    LinearLayout layout = new LinearLayout();
   }
 }
 
