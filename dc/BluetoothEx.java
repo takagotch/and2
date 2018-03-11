@@ -24,6 +24,7 @@ public class BluetoothEx extends AppCompatActivity
     LinearLayout layout = new LinearLayout(this);
     layout.setBackgroundColor();
     layout.setOrientation();
+    setContentView();
   }
 }
 
