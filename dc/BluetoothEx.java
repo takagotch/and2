@@ -81,17 +81,57 @@ public class BluetoothEx extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionMenu(Menu menu){
-      super.onCreateOptionMenu();
+      super.onCreateOptionMenu(menu);
+      MenuItem item0 = menu.add(0, 0, 0, "SEARCH");
+      item0.setIcon(android.R.drawable.ic_search_category_default);
+      MenuItem item1 = menu.add(0, 1, 0, "YES");
+      item1.setIcon(android.R.drawable.ic_menu_view);
+      return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(){}
+    public boolean onOptionsItemSelected(Menu menu){
+      if(item.getItemId(this, DeviceListActivity.class) == 0){
+        Intent intent = new Intent(this, DeviceListActivity.class);
+	startActivityForResult(intent, RQ_CONNECT_DEVICE);
+	return true;
+      } else if(item.getItemId() == 1){
+        ensureDiscoverable();
+	return true;
+      }
+      return false;
+    }
 
-    public void onActivityResult(){}
+    public void onActivityResult(int requestCode, int resultCode,
+	Intent data){
+      if(requestCode == RQ_CONNECT_DEVICE){
+        if(resultCode == Activity.RESULT_OK){
+	  String address
+		  = data.getExtras().getString("device_address");
+	  chatManger.connect(btAdapter.getRemoteDevice(address));
+	}
+      }
+      else if(requestCode == RQ_ENABLE_BT){
+        if(resultCode != Activity.RESULT_OK){
+	  addText("Bluetooth INVALID");
+	}
+      }
+    }
 
-    public void addText(){}
+    public void addText(final String text){
+      lblReceive.setText(text+BR_lblReceive.getText());
+    }
 
-    public void onClick(){}
+    public void onClick(View v){
+      try{
+        String message = edtSend.getText().toString();
+	if(message.length() > 0)
+		chatManager.write(message.getBytes());
+	addText(message);
+	edtSend.setText("");
+      } catch (Exception e){
+      }
+    }
   }
 }
 
