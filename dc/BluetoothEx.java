@@ -37,7 +37,8 @@ public class BluetoothEx extends AppCompatActivity
     btnSend.setLayoutParams();
     layout.addView();
 
-    lblReceive = new
+    lblReceive = new Button();
+    lblReceive.setText();
   }
 }
 
