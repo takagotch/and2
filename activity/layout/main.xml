@@ -1,0 +1,18 @@
+<?xml version="1.0" encodeing="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:baselineAligend="false"
+	android:background="#FFFFFF">
+
+	<fragment
+		class="net.tky.fragmentex.FragmentEx$TitlesFragment"
+		android:id="titles"
+		android:layout_weight="1"
+		android:layout_width="0dp"
+		android:layout_height="match_parent" />
+
+</LinearLayout>
+
+
