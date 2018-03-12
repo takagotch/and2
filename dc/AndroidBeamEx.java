@@ -31,20 +31,21 @@ public class AndroidBeamEx extends Activity implements
 
     LinearLayout layout = new LinearLayout(this);
     layout.setBackgroundColor(Color.WHITE);
-    layout.setOrientation();
-    setContentView();
+    layout.setOrientation(LinearLayout.VERTICAL);
+    setContentView(layout);
 
-    editText = new EditText();
-    editText.setText();
-    editText.setLayoutParams();
-    editText.setTextColor();
-    layout.addView();
+    editText = new EditText(this);
+    editText.setText("TEXT");
+    editText.setLayoutParams(MP, WC);
+    editText.setTextColor(Color.BLACK);
+    layout.addView(editText);
 
     nfcAdapter = NfcAdapter.getDefaultAdaputer(this);
-    if(){
-    
+    if(nfcAdapter != null){
+      nfcAdapter.setNdefPushMessageCallback(this, this);
+      nfcAdapter.setOnNdefPushCompleteCallback(this, this);
     } else {
-      toast();
+      toast("ERR");
     }
   }
 
