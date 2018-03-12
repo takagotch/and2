@@ -42,6 +42,12 @@
 		</provider>
 		//content://net.tky.dpprovider
 
+		//DetailActivity
+		<activity
+			android:name=".DetailActivity"
+			android:label="DetailActivity" >
+		</activity>
+
 	</application>
 
 </manifest>

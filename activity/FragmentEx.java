@@ -24,8 +24,51 @@ public class FragmentEx extends Activity{
 
     @Override
     public void onActivityCreated(Bundle bundle){
-    
+      super.onActivity(bundle);
+      setListAdapter(new ArrayAdapter<String>(getActivity(),
+	android.R.layout.simple_list_item_activated_1,
+	new String[]{"P1", "P2", "P3"}));
+      getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+      getListView().setBackgroundColor(Color.LTGRAY);
+      if(isTablet(getActivity())) showDetails(0);
     }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int pos, long id){
+      showDetails(pos);
+    }
+
+    private void showDetails(int index){
+      Context context = getActivity().getApplication();
+
+      if(isTablet(context)){
+        getListView().setItemChecked(index, true);
+	if(pos == index) return;
+	DetailActivity.DetailsFragment fragment =
+		DetailActivity.DetailsFragment.newInstance(index);
+	FragmentTransaction ft
+		= getFragmentManager().beginTransaction();
+	ft.replace(R.id.details, fragment);
+	ft.setTransition(
+			FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+	ft.commit();
+	pos = index;
+      }
+      else{
+	      getListView().setItemChecked(index, false);
+	      Intent intent = new Intent(context, DetailActivity.class);
+	      intent.putExtra("index", index);
+	      getActivity().startActivity(intent);
+      
+      }
+    }
+
+  public static boolean isTablet(Context context){
+    int layoutSize =
+	    (context.getResources().getConfiguration().screenLayout&
+	     Configuration.SCREENLAYOUT_SIZE_MASK);
+    return(layoutSize == Configuration.SCREENLAYOUT_SIZE_XLARGE ||
+	layoutSize == Configuration.SCREENLAYOUT_SIZE_XLARGE);
   }
 }
 
