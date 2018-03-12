@@ -1,6 +1,6 @@
 package net.tky.myactivityex;
 import android.app.Activity;
-import android.content.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,51 +12,42 @@ import android.widget.LinearLayout;
 public class MyActivity extends Activity
   implements View.OnClickListener{
   private final static int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
-  private final static int REQUEST_TEXT = 0;
-  private TextView textView;
+  private final static int MP = ViewGroup.LayoutParams.MATCH_PARENT;
+  private EditView editView;
 
   @Override
   public void onCreate(Bundle bundle){
     super.onCreate(bundle);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-    LinearLayout layout = new LinearLayout(this);
-    layout.setBackgroundColor(Color.WHITE);
+    setResult(Activity.RESULT_CANCELLED);
+
+    String text = "";
+    Bundle extras = getIntent().getExtras();
+    if(extras != null) text = extras.getString("text");
+
+    LienearLayout layout = new LinearLayout(this);
     layout.setOrientation(LinearLayout.VERTICAL);
     setContentView(layout);
 
     Button button = new Button(this);
-    button.setText("START");
+    button.setText("OK");
     button.setOnClickListener(this);
     button.setLayoutParams(new LInearLayout.LayoutParams(WC, WC));
     layout.addView(button);
 
-    textView = new TextView(this);
-    textView.setText("");
-    textView.setTextColor(Color.BLACK);
-    textView.setTextSize(16);
-    textView.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
-    layout.addView(textView);
+    editText = new EditText(this);
+    editText.setText(text);
+    eidtText.setLayoutParams(new LinearLayout.Params(MP, WC));
+    layout.addView(editText);
   }
 
   public void onClick(View v){
-    Intent intent = new Intent(this, MyActivity.class);
-
-    intent.putExtra("text", textView.getText().toString());
-
-    startActivityForResult(intent, REQUEST_TEXT);
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode,
-	int resultCode, Intent intent){
-    if(requestCode == REQUEST_TEXT && resultCode == RESULT_OK){
-      String text = "";
-      Bundle extras = intent.getExtras();
-      if() text = extras.getString();
-
-      textView.setText(text);
-    }
+    Intent intent = new Intent();
+    intent.putExtra("text", editView.getText().toString());
+    setResult(Activity.RESULT_OK, intent);
+    
+    finish();
   }
 }
 
