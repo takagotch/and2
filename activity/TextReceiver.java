@@ -1,43 +1,22 @@
 package net.tky.broadcastreceiverex;
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Content;
 import android.content.Intent;
-import android.graphics.Colors;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
-public class BroadcastReceiverEx extends Activity
-  implement View.OnClickListener{
-  private final static int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
-
+public class TextReceiver extends BroadcastReceiver{
   @Override
-  public void onCreate(Bundle bundle){
-    super.onCreate(bundle); 
-    requestWindowFeature();
+  public void onReceive(Content context, Intent intent){
+    Bundle bundle = intent.getExtras();
+    String text = bundle.getString("TEXT");
 
-    LinearLayout layout = new LinearLayout(this);
-    layout.setBackgroundColor(Color.WHITE);
-    layout.setOrientaion(LinearLayout.VERTICAL);
-    setContentView(layout);
-
-    Button button = new Button(this);
-    button.setText("INTENT BROADCAST");
-    button.setOnClickListener(this);
-    button.setLayoutParams(new ListnearLayout.LayoutParams(WC, WC));
-    layout.addView(button);
+    toast(context, text);
   }
 
-  public void onClick(View v){
-    Intent intent = new Intent();
-    intent.setAction("net.tky.broadcastreceiverex.VIEW");
-    intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-    intent.putExtra("TEXT", "TEST");
-    sendBroadcast(intent);
+  private static void toast(Context context, String text){
+    Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+    toast.show();
   }
 }
-
-
 

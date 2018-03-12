@@ -21,6 +21,15 @@
 			</intent-filter>
 
 		</activity>
+		//
+		<receiver
+			android:name=".TextReceiver"
+			android:exporterd="false" >
+			<intent-filter>
+				<action android:name="net.tky.broadcastreceiver.VIEW" />
+			</intent-filter>
+		</receiver>
+
 
 	</application>
 
