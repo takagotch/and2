@@ -22,22 +22,42 @@ public class MyActivityEx extends Activity
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     LinearLayout layout = new LinearLayout(this);
-    layout.setBackgroundColor();
-    layout.setOrientation();
-    setContentView();
+    layout.setBackgroundColor(Color.WHITE);
+    layout.setOrientation(LinearLayout.VERTICAL);
+    setContentView(layout);
 
-    Button button = new Button();
-    button.setText();
-    button.setOnClickListener();
-    button.setLayoutParams();
-    layout.addView();
+    Button button = new Button(this);
+    button.setText("START");
+    button.setOnClickListener(this);
+    button.setLayoutParams(new LinearLayout.LayoutPrams(WC, WC));
+    layout.addView(button);
 
-    textView = new TextView();
-    textView.setText();
-    textView.setTextColor();
-    textView.setTextSize();
-    textView.setLayoutParams();
+    textView = new TextView(this);
+    textView.setText("");
+    textView.setTextColor(Color.BLACK);
+    textView.setTextSize(16);
+    textView.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
     layout.addView(textView);
+  }
+
+  public void onClick(View v){
+    Intent intent = new Intent(this, MyActivity.class);
+
+    intent.putExtra("text", textView.getText().toString());
+
+    startActivityForResult(intent, REQUEST_TEXT);
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode,
+	int resultCode, Intent intent){
+        if(requestCode == REQUEST_TEXT && resultCode == RESULT_OK){
+	  String text = "";
+	  Bundle extras = intent.getExtras();
+	  if(extras != null) text = extras.getString("text");
+	  
+	  textView.setText(text);
+	}
   }
 }
 
