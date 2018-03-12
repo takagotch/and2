@@ -29,6 +29,11 @@
 				<action android:name="net.tky.broadcastreceiver.VIEW" />
 			</intent-filter>
 		</receiver>
+		//
+		<service
+			android:name=".MyService"
+			android:exported="false" >
+		</service>
 
 
 	</application>
