@@ -32,6 +32,10 @@ public class BroadcastReceiverEx extends Activity
 
   public void onClick(View v){
     Intent intent = new Intent();
+    intent.setAction("net.tky.broadcastreceiverex.VIEW");
+    intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+    intent.putExtra("TEXT", "TEST");
+    sendBroadcast(intent);
   }
 }
 
