@@ -34,11 +34,17 @@ public class ServiceEx extends Activity
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     LinearLayout layout = new LinearLayout(this);
-    layout.setBackgroundColor();
-    layout.setOrientation();
-    setContentView();
+    layout.setBackgroundColor(Color.WHITE);
+    layout.setOrientation(LinearLayout.VERTICAL);
+    setContentView(layout);
     
-    btn
+    btnStart = makeButton("T_STR", TAG_START);
+    layout.addView(btnStart);
+    btnStop = makeButton("T+ST", TAG_STOP);
+    layout.addView(btnStop);
+    btnControl = makeButton("T_CN", TAG_CONTROL);
+    layout.addView(btnControl);
+    setServiceUI(true);
   }
 }
 
