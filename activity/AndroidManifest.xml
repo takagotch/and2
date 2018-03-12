@@ -34,11 +34,18 @@
 			android:name=".MyService"
 			android:exported="false" >
 		</service>
-
+		//"content://net.tky.fileprovider/test"
+		<provider
+			android:name=".FileProvider"
+			android:authorities="net.tky.fileprovider"
+			android:exported="false">
+		</provider>
 
 	</application>
 
 </manifest>
 
+
+//"content://net.tky.fileprovider/test"
 
 
