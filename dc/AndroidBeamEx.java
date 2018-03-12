@@ -59,10 +59,11 @@ public class AndroidBeamEx extends Activity implements
     super.onResume();
 
     Intent intent = getIntent();
-    if(){
-      Parcelable[] msgs = intent.getParcelableArrayExtra();
-      NdefMessage msg = ()msgs[];
-      editText.setTExt();
+    if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())){
+      Parcelable[] msgs = intent.getParcelableArrayExtra(
+	NfcAdapter.EXTRA_NDEF_MESSAGES);
+      NdefMessage msg = (NdefMessage)msgs[0];
+      editText.setTExt(new String());
     }
   }
 
