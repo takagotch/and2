@@ -63,13 +63,39 @@ public class AndroidBeamEx extends Activity implements
       Parcelable[] msgs = intent.getParcelableArrayExtra(
 	NfcAdapter.EXTRA_NDEF_MESSAGES);
       NdefMessage msg = (NdefMessage)msgs[0];
-      editText.setTExt(new String());
+      editText.setTExt(new String(msg.getRecords()[].getPayload()));
     }
   }
 
   @Override
-  public NdefMessage createNdefMessage(){
-  
+  public NdefMessage createNdefMessage(NfcEvent event){
+    String text = editText.getText().toString();
+    NdefMessage msg = new NdefMessage(
+	new NdefRecord[]{
+	  createMimeRecord("application/net.tky.androidbeamex",
+		text.getBytes()),
+	  NdeRecord.crateApplicationRecord("net.tky.androidbeamex")
+	});
+    return msg;
+  }
+
+  private NdeRecord createMimeRecord(String mimeType, byte[] payload){
+    byte[] mimeBytes = mimeType.getBytes(Charset.formatName("US-ASCII"));
+    NdefRecord mimeRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,
+	mimeBytes, new byte[0], payload);
+    return mimeRecord;
+  }
+
+  @Override
+  public void onNdefPushComplete(NfcEvent event){
+    Handler handler = new Handler();
+    handler.post(new Runnable() {public void run(){
+      toast("OK");
+    }});
+  }
+
+  private void toast(String text){
+    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
   }
 
   }
