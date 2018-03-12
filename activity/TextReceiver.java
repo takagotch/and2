@@ -17,6 +17,21 @@ public class BroadcastReceiverEx extends Activity
   public void onCreate(Bundle bundle){
     super.onCreate(bundle); 
     requestWindowFeature();
+
+    LinearLayout layout = new LinearLayout(this);
+    layout.setBackgroundColor(Color.WHITE);
+    layout.setOrientaion(LinearLayout.VERTICAL);
+    setContentView(layout);
+
+    Button button = new Button(this);
+    button.setText("INTENT BROADCAST");
+    button.setOnClickListener(this);
+    button.setLayoutParams(new ListnearLayout.LayoutParams(WC, WC));
+    layout.addView(button);
+  }
+
+  public void onClick(View v){
+    Intent intent = new Intent();
   }
 }
 
