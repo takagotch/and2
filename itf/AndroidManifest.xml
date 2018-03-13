@@ -33,6 +33,10 @@
 	  <meta-data
 		  android:name="com.google.android.maps.v2.API_KEY"
 		  android:value="{API KEY}" />
+	  //
+	  <activity android:name=".ListViewActivity" />
+	  <activity android:name=".GridViewActivity" />
+	  <activity android:name=".ViewPagerActivity" />
 
   </application>
 
