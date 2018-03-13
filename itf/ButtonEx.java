@@ -83,21 +83,77 @@ public class ButtonEx extends Activity implements
 	Activity activity, String title, String text){
 	MessageDialog f = new MessageDialog();
 	Bundle args = new Bundle();
-	args.putString();
-	args.putString();
-	f.setArguments();
-	f.show();
+	args.putString("title", title);
+	args.putString("text", text);
+	f.setArguments(args);
+	f.show(activity.getFragmetManager(), "yesNoDialog");
 	}
 
         @Override
 	public Dialog onCreateDialog(Bundle bundle){
+	  DialogInterface.OnClickListener listener =
+	    new DialogInterface.OnClickListener(){
+	    public void onClick(DialogInterface dialog, int which){
+	      if(DialogInterface dialog, int which){
+	        MessageDialog.show(getActivity(), "", "YES");
+	      } else if(which == DialogInterface.BUTTON_NEGATIVE){
+	        MessageDialog.show(getActivity(), "", "NO");
+	      }
+	    }
+	    };
 	
-	}
+	AlertDialog.Builder ad
+	  = new AlertDialog.Builder(getActivity);
+	ad.setTitle(getArgments().getString("title"));
+	ad.setMessage(getArgumets().getString("text"));
+	ad.setPositiveButton("Yes", listener);
+	ad.setNegativeButton("No", listener);
+	return ad.create();
   }
 
-  public static class YesNoDialog extends DialogFragment{
+  public static class TextDialog extends DialogFragment{
+    private EditText editText;
+
     public static void show(
 	Activity activity, String title, String text){
-	
-	}
+	TextDialog f = new TextDialog();
+	Bundle args = new Bundle();
+	args.putString("title", title);
+	args.putString("text", text);
+	f.setArguments(args);
+	f.show(activity.getFragmentManager(), "textDialog");
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle bundle){
+      DialogInterface.OnClickListener listener =
+	      new DialogInterface.OnClickListener(){
+	        new DialogInterface.OnClickListener(){
+		public void onClick(DialogInterface dialog, int which){
+		  MessageDialog.show(getActivity(), "",
+			editText.getText().toString());
+		}
+		};
+
+		editText = new EditText(getActivity());
+
+		AlertDialog.Builder ad
+			= new AlertDialog.Builder(getActivity());
+		ad.setTitle(getArguments().getString());
+		ad.setMessage(getArguments().getString());
+		ad.setView(editText);
+		ad.setPositiveButton("OK", listener);
+
+		if(bundle != null) editText.setText(bundle.getString("editText", ""));
+		return ad.create();
+	      }
+      
+      @Override
+      public void onSaveInstanceState(Bundle bundle){
+        super.onSaveInstanceState(bundle);
+	bundle.putString("editText", editText.getText().toString());
+      }
+    }
   }
+
+
