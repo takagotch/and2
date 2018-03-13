@@ -23,20 +23,21 @@ public class TextViewEx extends Activity{
     setContentView(layout);
 
     TextView textView = new TextView(this);
-    textView.setText();
-    textView.setTextSize();
-    textView.setTextColor();
+    textView.setText("TEST");
+    textView.setTextSize(16.0f);
+    textView.setTextColor(Color.rgb(0, 0, 0));
 
-    textView.setLayoutParams();
+    textView.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
 
-    layout.addView();
+    layout.addView(textView);
 
-    Bitmap bitmap = BitmapFactory.decodeResource();
+    Bitmap bitmap = BitmapFactory.decodeResource(
+	getResources(), R.drawable.sample);
 
     ImageView imageView = new ImageView(this);
-    imageView.setImageBitmap();
-    imageView.setLayoutParams();
-    layout.addView();
+    imageView.setImageBitmap(bitmap);
+    imageView.setLayoutParams(new LinearLayout.LayoutParams(WC, WC));
+    layout.addView(imageView);
   }
 }
 
