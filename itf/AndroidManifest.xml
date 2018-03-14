@@ -37,6 +37,11 @@
 	  <activity android:name=".ListViewActivity" />
 	  <activity android:name=".GridViewActivity" />
 	  <activity android:name=".ViewPagerActivity" />
+	  //
+	  <activity android:name=".RelativeLayoutActivity" />
+ 	  <activity android:name=".TableLayoutActivity" />
+	  <activity android:name=".GridLayoutActivity" />
+	  <activity android:name=".FrameLayoutActivity" />
 
   </application>
 
