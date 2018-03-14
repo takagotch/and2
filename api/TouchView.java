@@ -23,16 +23,45 @@ public class TouchView extends View{
     paint.setAntiAlias(true);
     paint.setTextSize(48);
 
-    canvas.drawText();
+    canvas.drawText("TouchEx>", 0, 60*1, paint);
     Object[] keys = points.keySet().toArray();
     for(int i = 0; i < keys.length; i++){
-      PointF pos = ()pints.get();
-      canvas.drawText();
+      PointF pos = (PointF)pints.get(keys[i]);
+      canvas.drawText((int)pos.x+","+(int)pos.y, 0, 120+60*i,
+	paint);
     }
   }
 
   @Override
-  public boolean onTouchEvent(){}
+  public boolean onTouchEvent(MotionEvent event){
+    int action = event.getAction();
+    int count = event.getPointerCount();
+
+    int index = event.getActionIndex();
+    int pointerID = event.getPointerId(index);
+
+    switch(action&MotionEvent.ACTION_MASK){
+      case MotionEvent.ACTION_DOWN:
+      case MotionEvent.ACTION_PINTER_DOWN:
+	      pints.put(""+pointerID, new PointF(event.getX(),
+			event.getY()));
+           break;
+      case MotionEvent.ACTION_MOVE:
+	   for(int i = 0; i < count; i++){
+	     PointF pos = points.get(""+event.getPointerId(i));
+	     pos.x = event.getX(i);
+	     pos.y = event.getY(i);
+	   }
+	   break;
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_POINTER_UP:
+      case MotionEvent.ACTION_CANCEL:
+	   points.remove(""+pointerID);
+	   break;
+    }
+    invalidate();
+    return true;
+  }
 
 
 }
